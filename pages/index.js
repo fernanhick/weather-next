@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect } from 'react'
@@ -11,11 +12,25 @@ export default function Home() {
     const [longitude, setLongitude] = useState('')
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`
 
-    useEffect(() => {
-        fetch(url)
-        console.log('hello world')
-    }, [])
+    // const geoCodeURL = `curl -X POST -d locate="415 C'WEALTH AVE WEST Singapore" \ -d geoit="XML" \ https://geocode.xyz`
+    const geoCodeURL = `curl -X POST -d locate="manchester" \ -d geoit="XML" \ https://geocode.xyz`
 
+    const { location, setLocation } = useState('')
+
+    useEffect(() => {
+        axios.get(geoCodeURL).then((response) => console.log(response))
+
+        setLatitude(38.58)
+        setLongitude(12.34)
+    }, [])
+    useEffect(() => {
+        //   axios.get(geoCodeURL).then((response) => console.log(response))
+
+        axios
+            .get(url)
+            //.then((res) => res.json())
+            .then((dat) => console.log(dat.data))
+    }, [])
     return (
         <div className={styles.container}>
             <Head>
@@ -28,7 +43,8 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
-                <Searchbar />
+                <Searchbar data={location} />
+                <p> {location}</p>
             </main>
 
             <footer className={styles.footer}>This is the footer</footer>

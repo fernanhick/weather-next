@@ -1,9 +1,18 @@
 import React from 'react'
 
-function Searchbar() {
+function Searchbar({ location }) {
+    const handleLocation = (e) => {
+        location = e.target.value
+        console.log(e.target.value)
+    }
+    const submitLocation = (e) => {
+        e.preventDefault()
+        console.log(location)
+    }
+
     return (
-        <form>
-            <input name='searchBar' type='text' />
+        <form onSubmit={submitLocation}>
+            <input name='searchBar' type='text' onChange={handleLocation} />
             <button>Search</button>
         </form>
     )
