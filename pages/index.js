@@ -13,16 +13,16 @@ export default function Home() {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`
 
     // const geoCodeURL = `curl -X POST -d locate="415 C'WEALTH AVE WEST Singapore" \ -d geoit="XML" \ https://geocode.xyz`
-    const geoCodeURL = `curl -X POST -d locate="manchester" \ -d geoit="XML" \ https://geocode.xyz`
 
-    const { location, setLocation } = useState('')
+    const [location, setLocation] = useState('')
+    const geoCodeURL = `https://geocode.xyz/${location}?json=1`
 
     useEffect(() => {
         axios.get(geoCodeURL).then((response) => console.log(response))
 
         setLatitude(38.58)
         setLongitude(12.34)
-    }, [])
+    }, [location])
     useEffect(() => {
         //   axios.get(geoCodeURL).then((response) => console.log(response))
 
@@ -31,6 +31,12 @@ export default function Home() {
             //.then((res) => res.json())
             .then((dat) => console.log(dat.data))
     }, [])
+
+    const handleClick = (event, num) => {
+        event.preventDefault()
+        setLocation(num)
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -43,8 +49,8 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
-                <Searchbar data={location} />
-                <p> {location}</p>
+                <Searchbar handleClick={handleClick} />
+                <p> {!location ? 'No search' : `${location}`}</p>
             </main>
 
             <footer className={styles.footer}>This is the footer</footer>

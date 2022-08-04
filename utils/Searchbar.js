@@ -1,17 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
 
-function Searchbar({ location }) {
+function Searchbar({ handleClick }) {
+    const [location, setLocation] = useState('')
+
     const handleLocation = (e) => {
-        location = e.target.value
-        console.log(e.target.value)
-    }
-    const submitLocation = (e) => {
         e.preventDefault()
-        console.log(location)
+        setLocation(e.target.value)
     }
 
     return (
-        <form onSubmit={submitLocation}>
+        <form onSubmit={(e) => handleClick(e, location)}>
             <input name='searchBar' type='text' onChange={handleLocation} />
             <button>Search</button>
         </form>
