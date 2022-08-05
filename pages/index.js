@@ -50,10 +50,8 @@ export default function Home() {
 
             <main className={styles.main}>
                 <Searchbar handleClick={handleClick} />
-                <p> {!location ? 'No search' : `${location}`}</p>
+                {!location ? '' : `${location}`}
             </main>
-
-            <footer className={styles.footer}>This is the footer</footer>
         </div>
     )
 }
