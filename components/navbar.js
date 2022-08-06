@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import Searchbar from '../utils/Searchbar'
+import Searchbar from './weatherlist/Searchbar'
 import styles from './navbar.module.css'
 function Navbar() {
     return (
@@ -8,8 +8,6 @@ function Navbar() {
             <Link href='/'>
                 <a>Home</a>
             </Link>
-            <input className={styles.input} placeholder='search...' />
-            <Searchbar />
         </nav>
     )
 }
