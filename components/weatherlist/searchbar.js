@@ -10,7 +10,10 @@ function Searchbar({ handleClick }) {
     }
 
     return (
-        <form onSubmit={(e) => handleClick(e, location)}>
+        <form
+            className={styles.form}
+            onSubmit={(e) => handleClick(e, location)}
+        >
             <input
                 className={styles.input}
                 name='searchBar'
