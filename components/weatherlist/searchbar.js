@@ -2,8 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import styles from './searchbar.module.css'
 
-function Searchbar({ handleClick, handleLocation }) {
+function Searchbar({ handleClick }) {
     const [location, setLocation] = useState('')
+
+    const handleLocation = (e) => {
+        setLocation(e.target.value)
+    }
 
     return (
         <form onSubmit={(e) => handleClick(e, location)}>
@@ -11,7 +15,7 @@ function Searchbar({ handleClick, handleLocation }) {
                 className={styles.input}
                 name='searchBar'
                 type='text'
-                onChange={(e) => handleLocation(e)}
+                onChange={handleLocation}
                 autoComplete='off'
             />
             <button className={styles.button}>Search</button>

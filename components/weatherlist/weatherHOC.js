@@ -23,17 +23,9 @@ function WeatherHOC() {
         event.preventDefault()
         setLocation(num)
     }
-    const handleLocation = (e) => {
-        //        e.preventDefault()
-        setLocation(e.target.value)
-    }
     return (
         <div>
-            {' '}
-            <Searchbar
-                handleClick={handleClick}
-                handleLocation={handleLocation}
-            />
+            <Searchbar handleClick={handleClick} />
         </div>
     )
 }
