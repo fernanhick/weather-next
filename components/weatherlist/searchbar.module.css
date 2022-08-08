@@ -1,0 +1,8 @@
+.button,
+.input {
+    background-color: #eee;
+    border-radius: 30px;
+    height: 2rem;
+    padding: 0.5rem;
+    border: 1px;
+}

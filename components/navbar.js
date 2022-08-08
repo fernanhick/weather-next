@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import Searchbar from './weatherlist/Searchbar'
+import Searchbar from './weatherlist/searchbar'
 import styles from './navbar.module.css'
 function Navbar() {
     return (
