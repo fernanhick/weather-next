@@ -3,9 +3,10 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import Searchbar from './searchbar'
+import WeatherList from './weatherList'
 
 function WeatherHOC() {
-    const [data, setData] = useState('')
+    const [data, setData] = useState([])
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`
@@ -16,7 +17,7 @@ function WeatherHOC() {
     const geoCodeURL = `https://geocode.xyz/${location}?json=1`
 
     useEffect(() => {
-        axios.get(geoCodeURL).then((response) => console.log(response.data))
+        axios.get(geoCodeURL).then((response) => console.log(response))
     }, [location])
 
     const handleClick = (event, num) => {
@@ -26,6 +27,7 @@ function WeatherHOC() {
     return (
         <div>
             <Searchbar handleClick={handleClick} />
+            <WeatherList data={data} />
         </div>
     )
 }
