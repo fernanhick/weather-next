@@ -2,10 +2,7 @@
     background-color: #eee;
     margin: 1rem;
     box-shadow: 5px 5px 8px rgb(177, 177, 177), -5px -5px 8px rgb(255, 255, 255);
-    border-radius: 50px;
+    border-radius: 10px;
     height: 3rem;
     padding: 0.5rem;
-}
-.input {
-    border: none;
 }
