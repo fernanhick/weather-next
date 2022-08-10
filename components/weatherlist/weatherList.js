@@ -3,7 +3,14 @@ import React from 'react'
 function WeatherList({ data }) {
     return (
         <>
-            <p>{data}</p>
+            {/*    {data &&
+                data.map((loc, index) => {
+                    return (
+                        <div key={index}>
+                            <p>{loc.city}</p>
+                        </div>
+                    )
+                })} */}
         </>
     )
 }

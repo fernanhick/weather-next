@@ -17,8 +17,14 @@ function WeatherHOC() {
     const geoCodeURL = `https://geocode.xyz/${location}?json=1`
 
     useEffect(() => {
-        axios.get(geoCodeURL).then((response) => console.log(response))
+        axios
+            .get(geoCodeURL)
+            .then((response) => setData(response.data.alt?.loc))
     }, [location])
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
 
     const handleClick = (event, num) => {
         event.preventDefault()
