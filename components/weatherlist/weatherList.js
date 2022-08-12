@@ -1,6 +1,7 @@
 import React from 'react'
 
 function WeatherList({ data }) {
+    console.count('render count:')
     return (
         <>
             {/*    {data &&
